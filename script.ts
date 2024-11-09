@@ -1,8 +1,8 @@
-const menuPage = document.querySelector(".menu-container") as HTMLDivElement;
+const menuPage = document.querySelector(".big-menu-container") as HTMLDivElement;
 const formPage = document.querySelector(".big-container") as HTMLDivElement;
 const resumePage = document.querySelector(".dynamic-resume-container") as HTMLDivElement;
 
-menuPage.style.display = "block";
+menuPage.style.display = "flex";
 formPage.style.display = "none";
 resumePage.style.display = "none";
 
@@ -44,9 +44,8 @@ const resumeTimePeriod = document.getElementById("resumeTimePeriod") as HTMLSpan
 const resumeSkills = document.getElementById("resumeSkills") as HTMLLIElement;
 const resumeLanguage = document.getElementById("resumeLanguage") as HTMLLIElement;
 
-const editResumeBtn = document.getElementById('editResumeBtn') as HTMLButtonElement
-const downloadPdfBtn = document.getElementById('downloadPdfBtn') as HTMLButtonElement
-// const shareOnlineBtn = document.getElementById('shareOnlineBtn') as HTMLButtonElement
+const editResumeBtn = document.getElementById('editResumeBtn') as HTMLButtonElement;
+const downloadPdfBtn = document.getElementById('downloadPdfBtn') as HTMLButtonElement;
 
 ////////////////////////////////////////////////////////////
 
@@ -228,6 +227,8 @@ downloadPdfBtn.addEventListener("click", () => {
 
   });
 });
+
+
 
 ////////////////////////////////////////////////////////////
 

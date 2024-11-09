@@ -9,10 +9,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var _a;
-const menuPage = document.querySelector(".menu-container");
+const menuPage = document.querySelector(".big-menu-container");
 const formPage = document.querySelector(".big-container");
 const resumePage = document.querySelector(".dynamic-resume-container");
-menuPage.style.display = "block";
+menuPage.style.display = "flex";
 formPage.style.display = "none";
 resumePage.style.display = "none";
 function seeResumebuttonHandler() {

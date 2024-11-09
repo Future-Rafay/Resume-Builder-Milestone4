@@ -10,14 +10,31 @@
 </head>
 
 <body>
-    <div class="menu-container">
+    <!-- <div class="menu-container">
         <div class="menu-page">
-            <!-- <button onclick="seeResumebuttonHandler()" class="see-resume-btn">See Resume</button> -->
             <button><a href="https://resume-builder-milestone1-2.vercel.app/" target="_blank" id="see-resume-btn">See
                     demo Resume</a></button>
             <button onclick="createResumebuttonHandler()" class="create-resume-btn">Create your own</button>
         </div>
+    </div> -->
+    <div class="big-menu-container">
+    <div class="menu-container">
+        <div class="menu-page">
+            <h1>Welcome to CV sab ke liyee</h1>
+            <p>Build your personalized resume effortlessly with our Resume Builder.</p>
+            
+            <!-- See Demo Resume Button with specific class -->
+            <button class="see-demo-btn"><a href="https://resume-builder-milestone1-2.vercel.app/" target="_blank" id="see-resume-btn">See Demo Resume</a></button>
+    
+            <!-- Create Your Resume Button with specific class -->
+            <button class="create-resume-btn" onclick="createResumebuttonHandler()">Create Your Own</button>
+    
+            <div class="credits">
+                <p>Built with ❤️ by <a href="https://my-portfolio-animated-abdul-rafays-projects-87eac4f7.vercel.app/" target="_blank">Abdul Rafay</a></p>
+            </div>
+        </div>
     </div>
+</div>
 
     <div class="big-container">
         <div class="container">
@@ -179,7 +196,7 @@
         <div class="button-container">
             <button id="editResumeBtn">Edit Resume</button>
             <button id="downloadPdfBtn">Download as PDF</button>
-            <!-- <button id="shareOnlineBtn">Share Online</button> -->
+            <button id="GoHomeBtn" onclick="window.location.reload()">Go Home</button>
         </div>
     </div>
 

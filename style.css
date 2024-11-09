@@ -4,39 +4,106 @@
   box-sizing: border-box;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+/* General Layout */
 
-.menu-page{
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  background-color: #777;
+/* Menu Container */
+.big-menu-container{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
+  box-sizing: border-box;
+}
+.menu-container {
+  width: 100%;
+  max-width: 600px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 40px 20px;
+  text-align: center;
 }
 
-.menu-page button{
-  padding: 10px 20px;
+/* Title and Description */
+.menu-page h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.menu-page p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* Button Styles */
+
+/* See Demo Resume Button */
+.see-demo-btn {
+  background-color: #B63E96;
+  color: white;
+  font-size: 1.1rem;
   border: none;
-  border-radius: 4px;
-  font-size: 1rem;
+  padding: 12px 30px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s;
-}
-.menu-page button:hover{
-scale: 1.10;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+  width: 100%;
+  max-width: 250px;
 }
 
-#see-resume-btn{
-  font-weight: 600;
-  color: black;
+.see-demo-btn:hover {
+  background-color: #58E6D9;
+}
+
+.see-demo-btn a {
+  color: white;
   text-decoration: none;
 }
-.create-resume-btn{
-  margin-top: 20px;
-  font-weight: 600;
+
+/* Create Your Resume Button */
+.create-resume-btn {
+  background-color: #58E6D9;
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+  width: 100%;
+  max-width: 250px;
 }
+
+.create-resume-btn:hover {
+  background-color: #B63E96;
+}
+
+/* Credits Section */
+
+.credits {
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.credits a {
+  color: #B63E96;
+  text-decoration: none;
+}
+
+.credits a:hover {
+  text-decoration: underline;
+}
+
 
 .big-container {
   display: flex;
@@ -429,15 +496,15 @@ fieldset button {
 #downloadPdfBtn:hover {
   background-color: #007bb5;
 }
-/* 
-#shareOnlineBtn {
+
+#GoHomeBtn {
   background-color: #e7e7e7; 
   color: black;
 }
 
-#shareOnlineBtn:hover {
+#GoHomeBtn:hover {
   background-color: #d6d6d6;
-} */
+} 
 
 @media only screen and (max-width: 380px) {
   .resume-container {
