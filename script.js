@@ -46,7 +46,6 @@ const resumeSkills = document.getElementById("resumeSkills");
 const resumeLanguage = document.getElementById("resumeLanguage");
 const editResumeBtn = document.getElementById('editResumeBtn');
 const downloadPdfBtn = document.getElementById('downloadPdfBtn');
-// const shareOnlineBtn = document.getElementById('shareOnlineBtn') as HTMLButtonElement
 ////////////////////////////////////////////////////////////
 const form = document.getElementById("resume-form");
 form.addEventListener("submit", (event) => __awaiter(void 0, void 0, void 0, function* () {
@@ -233,7 +232,7 @@ removeEducationButton === null || removeEducationButton === void 0 ? void 0 : re
     }
 });
 ////////////////////////////////////////////////////////////
-// function to save form data
+// // function to save form data
 function saveFormData() {
     const formData = {
         name: document.getElementById("name").value,
@@ -257,32 +256,50 @@ function saveFormData() {
     };
     localStorage.setItem('savedFormData', JSON.stringify(formData));
 }
-// Function to load form data
 function loadFormData() {
     const savedData = JSON.parse(localStorage.getItem('savedFormData') || '{}');
-    if (savedData) {
-        const userChoice = confirm("Would you like to auto-fill the form?");
-        if (userChoice) {
-            document.getElementById("name").value = savedData.name;
-            document.getElementById("username").value = savedData.userName;
-            document.getElementById("location").value = savedData.location;
-            document.getElementById("email").value = savedData.Email;
-            document.getElementById("phone").value = savedData.Phone;
-            document.getElementById("profile").value = savedData.Profile;
-            document.getElementById("title").value = savedData.Title;
-            document.getElementById("companyName").value = savedData.Companyname;
-            document.getElementById("companyLocation").value = savedData.Companylocation;
-            document.getElementById("desgination").value = savedData.designation;
-            document.getElementById("JobTime").value = savedData.jobtime;
-            document.getElementById("jobDescription").value = savedData.jobdescription;
-            document.getElementById("instituteName").value = savedData.institutename;
-            document.getElementById("degree").value = savedData.degree;
-            document.getElementById("field").value = savedData.field;
-            document.getElementById("passed-year").value = savedData.passedyear;
-            document.getElementById("skills").value = savedData.skills;
-            document.getElementById("languages").value = savedData.languages;
-        }
+    const defaultData = {
+        name: 'John Doe',
+        userName: 'johndoe123',
+        location: 'New York, USA',
+        Email: 'johndoe@example.com',
+        Phone: '+1-234-567-8901',
+        Profile: 'Experienced web developer with a passion for creating interactive applications.',
+        Title: 'Senior Web Developer',
+        Companyname: 'Tech Solutions Inc.',
+        Companylocation: 'San Francisco, CA',
+        designation: 'Full-Stack Developer',
+        jobtime: '2018 - Present',
+        jobdescription: 'Developed and maintained web applications, optimized performance, and led team projects.',
+        institutename: 'University of California, Berkeley',
+        degree: 'Bachelor of Science in Computer Science',
+        field: 'Computer Science',
+        passedyear: '2017',
+        skills: 'JavaScript, TypeScript, HTML, CSS, React, Node.js',
+        languages: 'English, Spanish'
+    };
+    // Merge saved data with default data
+    const formData = Object.assign(Object.assign({}, defaultData), savedData);
+    const userChoice = confirm("Would you like to auto-fill the form?");
+    if (userChoice) {
+        document.getElementById("name").value = formData.name;
+        document.getElementById("username").value = formData.userName;
+        document.getElementById("location").value = formData.location;
+        document.getElementById("email").value = formData.Email;
+        document.getElementById("phone").value = formData.Phone;
+        document.getElementById("profile").value = formData.Profile;
+        document.getElementById("title").value = formData.Title;
+        document.getElementById("companyName").value = formData.Companyname;
+        document.getElementById("companyLocation").value = formData.Companylocation;
+        document.getElementById("desgination").value = formData.designation;
+        document.getElementById("JobTime").value = formData.jobtime;
+        document.getElementById("jobDescription").value = formData.jobdescription;
+        document.getElementById("instituteName").value = formData.institutename;
+        document.getElementById("degree").value = formData.degree;
+        document.getElementById("field").value = formData.field;
+        document.getElementById("passed-year").value = formData.passedyear;
+        document.getElementById("skills").value = formData.skills;
+        document.getElementById("languages").value = formData.languages;
     }
 }
 (_a = document.getElementById("resume-form")) === null || _a === void 0 ? void 0 : _a.addEventListener('submit', saveFormData);
-////////////////////////////////////////////////////////////
