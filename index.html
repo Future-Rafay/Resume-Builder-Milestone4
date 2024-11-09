@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume Builder | Future rafay</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -18,10 +19,6 @@
         </div>
     </div>
 
-
-
-
-
     <div class="big-container">
         <div class="container">
             <h1 id="Credit">Made by Abdul Rafay (Roll No :00299941)</h1><br><br>
@@ -31,13 +28,13 @@
             <form id="resume-form">
 
                 <label for="name">Enter Name:</label>
-                <input type="text" id="name" placeholder="Enter Your Name" required>
+                <input onclick="loadFormData()" type="text" id="name" placeholder="Enter Your Name" required>
 
                 <label for="username">Enter Username:</label>
                 <input type="text" id="username" placeholder="Enter unique username" required>
 
                 <label for="photo">Upload photo:</label>
-                <input type="file" id="photo">
+                <input type="file" id="photo" required>
                 <p>Image should be clear and less than 5 MB</p>
 
                 <label for="title">Title:</label>
@@ -58,7 +55,7 @@
                 </fieldset>
 
                 <label for="profile">About you:</label>
-                <input type="text" id="profile" placeholder="Some lines about you">
+                <input type="text" id="profile" placeholder="Some lines about you" required>
 
                 <fieldset>
                     <legend>Experience</legend>
@@ -180,11 +177,14 @@
                 </div>
             </div>
         </div>
+        <div class="button-container">
+            <button id="editResumeBtn">Edit Resume</button>
+            <button id="downloadPdfBtn">Download as PDF</button>
+            <button id="shareOnlineBtn">Share Online</button>
+        </div>
     </div>
 
-
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 

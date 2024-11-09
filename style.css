@@ -410,6 +410,50 @@ fieldset button {
   font-size: 10px;
 }
 
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 20px;
+}
+
+.button-container button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#editResumeBtn {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+#editResumeBtn:hover {
+  background-color: #45a049;
+}
+
+#downloadPdfBtn {
+  background-color: #008CBA; /* Blue */
+  color: white;
+}
+
+#downloadPdfBtn:hover {
+  background-color: #007bb5;
+}
+
+#shareOnlineBtn {
+  background-color: #e7e7e7; /* Gray */
+  color: black;
+}
+
+#shareOnlineBtn:hover {
+  background-color: #d6d6d6;
+}
+
 @media only screen and (max-width: 380px) {
   .resume-container {
     width: 100%;

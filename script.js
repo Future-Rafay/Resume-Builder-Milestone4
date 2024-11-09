@@ -8,6 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var _a;
 const menuPage = document.querySelector(".menu-container");
 const formPage = document.querySelector(".big-container");
 const resumePage = document.querySelector(".dynamic-resume-container");
@@ -43,6 +44,9 @@ const resumeField = document.getElementById("resumeField");
 const resumeTimePeriod = document.getElementById("resumeTimePeriod");
 const resumeSkills = document.getElementById("resumeSkills");
 const resumeLanguage = document.getElementById("resumeLanguage");
+const editResumeBtn = document.getElementById('editResumeBtn');
+const downloadPdfBtn = document.getElementById('downloadPdfBtn');
+const shareOnlineBtn = document.getElementById('shareOnlineBtn');
 ////////////////////////////////////////////////////////////
 const form = document.getElementById("resume-form");
 form.addEventListener("submit", (event) => __awaiter(void 0, void 0, void 0, function* () {
@@ -76,6 +80,7 @@ form.addEventListener("submit", (event) => __awaiter(void 0, void 0, void 0, fun
         .value;
     const submit = document.getElementById("submit");
     const clear = document.getElementById("clear");
+    ////////////////////////////////////////////////////////////
     const photoFile = profilePicture.files ? profilePicture.files[0] : null;
     let photoCheck = "";
     if (photoFile) {
@@ -114,6 +119,36 @@ function fileToBase64(file) {
     });
 }
 ////////////////////////////////////////////////////////////
+editResumeBtn.addEventListener('click', () => {
+    updateForm();
+    resumePage.style.display = "none";
+    formPage.style.display = "flex";
+    menuPage.style.display = "none";
+});
+function updateForm() {
+    document.getElementById("name").value = resumeName.textContent || '';
+    let resumeUserName = document.getElementById("username").value;
+    document.getElementById("username").value = resumeUserName;
+    document.getElementById("photo");
+    document.getElementById("location").value = resumeLocation.textContent || '';
+    document.getElementById("email").value = resumeEmail.textContent || '';
+    document.getElementById("phone").value = resumePhone.textContent || '';
+    document.getElementById("profile").value = resumeAbout.textContent || '';
+    document.getElementById("title").value = resumeTitle.textContent || '';
+    document.getElementById("companyName").value = resumeCompanyName.textContent || '';
+    document.getElementById("companyLocation").value = resumeCompanyLocation.textContent || '';
+    document.getElementById("desgination").value = resumeDesignation.textContent || '';
+    document.getElementById("JobTime").value = resumeCompanyJobTime.textContent || '';
+    document.getElementById("jobDescription").value = resumeJobDescription.textContent || '';
+    document.getElementById("instituteName").value = resumeIntituteName.textContent || '';
+    document.getElementById("degree").value = resumeDegree.textContent || '';
+    document.getElementById("field").value = resumeField.textContent || '';
+    document.getElementById("passed-year").value = resumeTimePeriod.textContent || '';
+    document.getElementById("skills").value = resumeSkills.textContent || '';
+    document.getElementById("languages").value = resumeLanguage.textContent || '';
+}
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
 const experienceFieldset = document.getElementById("experience-item");
 const addExperienceButton = document.getElementById("add-experience");
 const removeExperienceButton = document.getElementById("remove-experience");
@@ -124,24 +159,24 @@ addExperienceButton === null || addExperienceButton === void 0 ? void 0 : addExp
     const newExperience = document.createElement("div");
     newExperience.classList.add("experience-item");
     newExperience.innerHTML = `
-                        <h5>New Experiance Section</h5>
-                        <label for="companyName">Company name:</label>
-                        <input type="text" id="companyName" placeholder="ABC Tech Solutions" required>
-
-                        <label for="companyLocation">Company location:</label>
-                        <input type="text" id="companyLocation" placeholder="Gulshan maymar Karachi, Pakistan" required>
-
-                        <label for="desgination">Designation:</label>
-                        <input type="text" id="desgination" placeholder="Front-End Developer Intern" required>
-
-                        <label for="jobTime">Time period:</label>
-                        <input type="text" id="JobTime" placeholder="2022-2024" required>
-
-                        <label for="jobDescription">Description:</label>
-                        <input type="text" id="jobDescription" placeholder="Some thing about your job (optional)">
-
-
-    `;
+  <h5>New Experiance Section</h5>
+  <label for="companyName">Company name:</label>
+  <input type="text" id="companyName" placeholder="ABC Tech Solutions" required>
+  
+  <label for="companyLocation">Company location:</label>
+  <input type="text" id="companyLocation" placeholder="Gulshan maymar Karachi, Pakistan" required>
+  
+  <label for="desgination">Designation:</label>
+  <input type="text" id="desgination" placeholder="Front-End Developer Intern" required>
+  
+  <label for="jobTime">Time period:</label>
+  <input type="text" id="JobTime" placeholder="2022-2024" required>
+  
+  <label for="jobDescription">Description:</label>
+  <input type="text" id="jobDescription" placeholder="Some thing about your job (optional)">
+  
+  
+  `;
     experienceFieldset.appendChild(newExperience);
 });
 addEducationButton === null || addEducationButton === void 0 ? void 0 : addEducationButton.addEventListener("click", () => {
@@ -154,13 +189,13 @@ addEducationButton === null || addEducationButton === void 0 ? void 0 : addEduca
 
                         <label for="degree">Degree name:</label>
                         <input type="text" id="degree" placeholder="Intermediate" required>
-
+                        
                         <label for="field">Which field:</label>
                         <input type="text" id="field" placeholder="Pre-Engineering">
-
+                        
                         <label for="passed-year">Year passed:</label>
                         <input type="text" id="passed-year" placeholder="2023-Present" required>
-    `;
+                        `;
     educationFieldset.appendChild(newEducation);
 });
 removeExperienceButton === null || removeExperienceButton === void 0 ? void 0 : removeExperienceButton.addEventListener("click", () => {
@@ -175,4 +210,57 @@ removeEducationButton === null || removeEducationButton === void 0 ? void 0 : re
         educationFieldset.removeChild(lastEducation);
     }
 });
+////////////////////////////////////////////////////////////
+// function to save form data
+function saveFormData() {
+    const formData = {
+        name: document.getElementById("name").value,
+        userName: document.getElementById("username").value,
+        location: document.getElementById("location").value,
+        Email: document.getElementById("email").value,
+        Phone: document.getElementById("phone").value,
+        Profile: document.getElementById("profile").value,
+        Title: document.getElementById("title").value,
+        Companyname: document.getElementById("companyName").value,
+        Companylocation: document.getElementById("companyLocation").value,
+        designation: document.getElementById("desgination").value,
+        jobtime: document.getElementById("JobTime").value,
+        jobdescription: document.getElementById("jobDescription").value,
+        institutename: document.getElementById("instituteName").value,
+        degree: document.getElementById("degree").value,
+        field: document.getElementById("field").value,
+        passedyear: document.getElementById("passed-year").value,
+        skills: document.getElementById("skills").value,
+        languages: document.getElementById("languages").value,
+    };
+    localStorage.setItem('savedFormData', JSON.stringify(formData));
+}
+// Function to load form data
+function loadFormData() {
+    const savedData = JSON.parse(localStorage.getItem('savedFormData') || '{}');
+    if (savedData) {
+        const userChoice = confirm("Would you like to auto-fill the form?");
+        if (userChoice) {
+            document.getElementById("name").value = savedData.name;
+            document.getElementById("username").value = savedData.userName;
+            document.getElementById("location").value = savedData.location;
+            document.getElementById("email").value = savedData.Email;
+            document.getElementById("phone").value = savedData.Phone;
+            document.getElementById("profile").value = savedData.Profile;
+            document.getElementById("title").value = savedData.Title;
+            document.getElementById("companyName").value = savedData.Companyname;
+            document.getElementById("companyLocation").value = savedData.Companylocation;
+            document.getElementById("desgination").value = savedData.designation;
+            document.getElementById("JobTime").value = savedData.jobtime;
+            document.getElementById("jobDescription").value = savedData.jobdescription;
+            document.getElementById("instituteName").value = savedData.institutename;
+            document.getElementById("degree").value = savedData.degree;
+            document.getElementById("field").value = savedData.field;
+            document.getElementById("passed-year").value = savedData.passedyear;
+            document.getElementById("skills").value = savedData.skills;
+            document.getElementById("languages").value = savedData.languages;
+        }
+    }
+}
+(_a = document.getElementById("resume-form")) === null || _a === void 0 ? void 0 : _a.addEventListener('submit', saveFormData);
 ////////////////////////////////////////////////////////////
