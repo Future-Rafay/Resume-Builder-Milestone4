@@ -46,7 +46,7 @@ const resumeSkills = document.getElementById("resumeSkills");
 const resumeLanguage = document.getElementById("resumeLanguage");
 const editResumeBtn = document.getElementById('editResumeBtn');
 const downloadPdfBtn = document.getElementById('downloadPdfBtn');
-const shareOnlineBtn = document.getElementById('shareOnlineBtn');
+// const shareOnlineBtn = document.getElementById('shareOnlineBtn') as HTMLButtonElement
 ////////////////////////////////////////////////////////////
 const form = document.getElementById("resume-form");
 form.addEventListener("submit", (event) => __awaiter(void 0, void 0, void 0, function* () {
@@ -78,8 +78,6 @@ form.addEventListener("submit", (event) => __awaiter(void 0, void 0, void 0, fun
         .value;
     const languages = document.getElementById("languages")
         .value;
-    const submit = document.getElementById("submit");
-    const clear = document.getElementById("clear");
     ////////////////////////////////////////////////////////////
     const photoFile = profilePicture.files ? profilePicture.files[0] : null;
     let photoCheck = "";
@@ -129,7 +127,6 @@ function updateForm() {
     document.getElementById("name").value = resumeName.textContent || '';
     let resumeUserName = document.getElementById("username").value;
     document.getElementById("username").value = resumeUserName;
-    document.getElementById("photo");
     document.getElementById("location").value = resumeLocation.textContent || '';
     document.getElementById("email").value = resumeEmail.textContent || '';
     document.getElementById("phone").value = resumePhone.textContent || '';
@@ -147,7 +144,32 @@ function updateForm() {
     document.getElementById("skills").value = resumeSkills.textContent || '';
     document.getElementById("languages").value = resumeLanguage.textContent || '';
 }
-////////////////////////////////////////////////////////////
+downloadPdfBtn.addEventListener("click", () => {
+    if (typeof html2pdf === "undefined") {
+        alert("Error: html2pdf library is not working");
+        return;
+    }
+    // Define the element to convert into PDF
+    const content = document.querySelector(".resume-container");
+    if (content instanceof HTMLElement) {
+        // Apply dynamic style for PDF export
+        content.style.width = '100%';
+        content.style.maxWidth = '100%';
+        content.style.boxSizing = 'border-box';
+    }
+    // Define PDF settings
+    const downloadedPDFSettings = {
+        // margin: 0.5,
+        filename: "Your Resume.pdf",
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+    };
+    // Generate and download PDF
+    html2pdf().set(downloadedPDFSettings).from(content).save().catch((error) => {
+        console.error("PDF compilation error", error);
+    });
+});
 ////////////////////////////////////////////////////////////
 const experienceFieldset = document.getElementById("experience-item");
 const addExperienceButton = document.getElementById("add-experience");

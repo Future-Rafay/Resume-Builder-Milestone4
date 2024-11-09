@@ -46,7 +46,7 @@ const resumeLanguage = document.getElementById("resumeLanguage") as HTMLLIElemen
 
 const editResumeBtn = document.getElementById('editResumeBtn') as HTMLButtonElement
 const downloadPdfBtn = document.getElementById('downloadPdfBtn') as HTMLButtonElement
-const shareOnlineBtn = document.getElementById('shareOnlineBtn') as HTMLButtonElement
+// const shareOnlineBtn = document.getElementById('shareOnlineBtn') as HTMLButtonElement
 
 ////////////////////////////////////////////////////////////
 
@@ -101,11 +101,7 @@ form.addEventListener("submit", async (event: Event) => {
   const languages = (document.getElementById("languages") as HTMLInputElement)
     .value;
 
-  const submit = document.getElementById("submit") as HTMLButtonElement;
-  const clear = document.getElementById("clear") as HTMLButtonElement;
-
   ////////////////////////////////////////////////////////////
-
 
   const photoFile = profilePicture.files ? profilePicture.files[0] : null;
 
@@ -173,8 +169,6 @@ function updateForm() {
   let resumeUserName = (document.getElementById("username") as HTMLInputElement).value;
   (document.getElementById("username") as HTMLInputElement).value = resumeUserName;
 
-  document.getElementById("photo") as HTMLInputElement;
-
   (document.getElementById("location") as HTMLInputElement).value = resumeLocation.textContent || '';
   (document.getElementById("email") as HTMLInputElement).value = resumeEmail.textContent || '';
   (document.getElementById("phone") as HTMLInputElement).value = resumePhone.textContent || '';
@@ -201,20 +195,39 @@ function updateForm() {
 }
 ////////////////////////////////////////////////////////////
 
+declare const html2pdf: any;
 
+downloadPdfBtn.addEventListener("click", () => {
+  if (typeof html2pdf === "undefined") {
+    alert("Error: html2pdf library is not working");
+    return;
+  }
 
+  // Define the element to convert into PDF
+  const content = document.querySelector(".resume-container");
 
+  if (content instanceof HTMLElement) {
+    // Apply dynamic style for PDF export
+    content.style.width = '100%';
+    content.style.maxWidth = '100%';
+    content.style.boxSizing = 'border-box';
+  }
 
+  // Define PDF settings
+  const downloadedPDFSettings = {
+    // margin: 0.5,
+    filename: "Your Resume.pdf",
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+  };
 
+  // Generate and download PDF
+  html2pdf().set(downloadedPDFSettings).from(content).save().catch((error: Error) => {
+    console.error("PDF compilation error", error);
 
-
-
-
-
-
-
-
-
+  });
+});
 
 ////////////////////////////////////////////////////////////
 
@@ -229,7 +242,7 @@ const removeEducationButton = document.getElementById("remove-education") as HTM
 addExperienceButton?.addEventListener("click", () => {
   const newExperience = document.createElement("div");
   newExperience.classList.add("experience-item");
-  
+
   newExperience.innerHTML = `
   <h5>New Experiance Section</h5>
   <label for="companyName">Company name:</label>
@@ -256,7 +269,7 @@ addExperienceButton?.addEventListener("click", () => {
 addEducationButton?.addEventListener("click", () => {
   const newEducation = document.createElement("div");
   newEducation.classList.add("education-item");
-  
+
   newEducation.innerHTML = `
                         <h5>New Education Section</h5>
                         <label for="instituteName">Institute name:</label>
@@ -285,7 +298,7 @@ removeExperienceButton?.addEventListener("click", () => {
 
 removeEducationButton?.addEventListener("click", () => {
   const lastEducation = educationFieldset.querySelector(".education-item:last-child");
-  
+
   if (lastEducation) {
     educationFieldset.removeChild(lastEducation);
   }
@@ -334,24 +347,24 @@ function loadFormData() {
       (document.getElementById("username") as HTMLInputElement).value = savedData.userName;
 
       (document.getElementById("location") as HTMLInputElement).value = savedData.location;
-        (document.getElementById("email") as HTMLInputElement).value = savedData.Email;
-          (document.getElementById("phone") as HTMLInputElement).value = savedData.Phone;
+      (document.getElementById("email") as HTMLInputElement).value = savedData.Email;
+      (document.getElementById("phone") as HTMLInputElement).value = savedData.Phone;
 
-            (document.getElementById("profile") as HTMLInputElement).value = savedData.Profile;
-              (document.getElementById("title") as HTMLInputElement).value = savedData.Title;
-                (document.getElementById("companyName") as HTMLInputElement).value = savedData.Companyname;
-                  (document.getElementById("companyLocation") as HTMLInputElement).value = savedData.Companylocation;
-                    (document.getElementById("desgination") as HTMLInputElement).value = savedData.designation;
-                      (document.getElementById("JobTime") as HTMLInputElement).value = savedData.jobtime;
-                        (document.getElementById("jobDescription") as HTMLInputElement).value = savedData.jobdescription;
+      (document.getElementById("profile") as HTMLInputElement).value = savedData.Profile;
+      (document.getElementById("title") as HTMLInputElement).value = savedData.Title;
+      (document.getElementById("companyName") as HTMLInputElement).value = savedData.Companyname;
+      (document.getElementById("companyLocation") as HTMLInputElement).value = savedData.Companylocation;
+      (document.getElementById("desgination") as HTMLInputElement).value = savedData.designation;
+      (document.getElementById("JobTime") as HTMLInputElement).value = savedData.jobtime;
+      (document.getElementById("jobDescription") as HTMLInputElement).value = savedData.jobdescription;
 
-                          (document.getElementById("instituteName") as HTMLInputElement).value = savedData.institutename;
-                            (document.getElementById("degree") as HTMLInputElement).value = savedData.degree;
-                              (document.getElementById("field") as HTMLInputElement).value = savedData.field;
-                                (document.getElementById("passed-year") as HTMLInputElement).value = savedData.passedyear;
-                                  (document.getElementById("skills") as HTMLTextAreaElement).value = savedData.skills;
+      (document.getElementById("instituteName") as HTMLInputElement).value = savedData.institutename;
+      (document.getElementById("degree") as HTMLInputElement).value = savedData.degree;
+      (document.getElementById("field") as HTMLInputElement).value = savedData.field;
+      (document.getElementById("passed-year") as HTMLInputElement).value = savedData.passedyear;
+      (document.getElementById("skills") as HTMLTextAreaElement).value = savedData.skills;
 
-                                    (document.getElementById("languages") as HTMLInputElement).value = savedData.languages;
+      (document.getElementById("languages") as HTMLInputElement).value = savedData.languages;
     }
   }
 }
