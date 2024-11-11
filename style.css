@@ -591,3 +591,125 @@ fieldset button {
     font-size: 8px;
   }
 }
+/*//////////////////////////////////////////////////////////*
+
+/* Media Query for Laptops (1024px and below) */
+@media only screen and (max-width: 1024px) {
+  .resume-container {
+    width: 60%;
+  }
+
+  .row-container {
+    top: 4%;
+    height: 12%;
+  }
+
+  .pic-container img {
+    top: -10%;
+    height: 120px;
+  }
+
+  .name-container h1 {
+    font-size: 36px;
+  }
+
+  .name-container h3 {
+    font-size: 18px;
+  }
+
+  .personal-info-container {
+    padding-top: 100px;
+  }
+
+  .professional-info-container {
+    gap: 15px;
+  }
+}
+
+/* Media Query for Tablets (768px and below) */
+@media only screen and (max-width: 768px) {
+  .resume-container {
+    width: 80%;
+  }
+
+  .row-container {
+    top: 6%;
+    height: 10%;
+  }
+
+  .pic-container img {
+    top: -5%;
+    height: 100px;
+  }
+
+  .name-container h1 {
+    font-size: 28px;
+  }
+
+  .name-container h3 {
+    font-size: 16px;
+  }
+
+  .personal-info-container {
+    padding-top: 120px;
+    gap: 15px;
+  }
+
+  .professional-info-container {
+    padding: 1.5%;
+    gap: 15px;
+  }
+
+  .skills ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Media Query for Mobile Devices (480px and below) */
+@media only screen and (max-width: 480px) {
+  .resume-container {
+    width: 90%;
+  }
+
+  .row-container {
+    top: 8%;
+    height: 8%;
+  }
+
+  .pic-container img {
+    top: 0;
+    height: 80px;
+  }
+
+  .name-container h1 {
+    font-size: 22px;
+  }
+
+  .name-container h3 {
+    font-size: 14px;
+  }
+
+  .personal-info-container {
+    padding-top: 140px;
+    gap: 10px;
+  }
+
+  .about h4,
+  .contact h4,
+  .language h4 {
+    font-size: 12px;
+    text-align: start;
+    padding: 2px;
+  }
+
+  .professional-info-container {
+    padding: 1%;
+    gap: 10px;
+  }
+
+  .skills ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
